@@ -12,7 +12,7 @@ class Auto {
   public:
     int year = 2010;
     int hp = 335;
-
+    int horsePower = 69;
     //FUEL
     // Setter
     void setFuel(float f) {
@@ -58,10 +58,12 @@ class Auto {
     int getHP() {
       return hp;
     }
-
-
-    void returnYear(){
-      cout << year;
+    // PUBLISKAS KLASES METODES
+    int returnYear(int year){
+      return year;
+    }
+    int returnHP(int hp){
+      return hp;
     }
 };
 
@@ -74,7 +76,10 @@ int main() {
   cout << "\nBrand: " << myObj.getBrand();
   cout << "\nModel: " << myObj.getModel();
   cout << "\nYear: " << myObj.getYear();
-  cout << "\nYear: " << myObj.getHP();
+  cout << "\nHorse Power: " << myObj.getHP();
+
+  cout << "\n\nHP : " << myObj.returnHP(950);
+  cout << "\nYear : " << myObj.returnHP(2020);
 
   return 0;
 }
