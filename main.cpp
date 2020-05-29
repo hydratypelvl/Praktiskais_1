@@ -13,6 +13,7 @@ class Auto {
     int year = 2010;
     int hp = 335;
     int horsePower = 69;
+    float attalums, celaBenzins;
     //FUEL
     // Setter
     void setFuel(float f) {
@@ -66,6 +67,7 @@ class Auto {
       return hp;
     }
     void printAutoData();
+    void getCelaBenzins();
 };
 
 void Auto::printAutoData() {
@@ -74,6 +76,12 @@ void Auto::printAutoData() {
   cout << "\nModel: " << getModel();
   cout << "\nYear: " << getYear();
   cout << "\nHorse Power: " << getHP();
+}
+void Auto::getCelaBenzins() {
+  cout << "\n\nIevadiet distanci kilometros: ";
+  cin >> attalums;
+  celaBenzins = getFuel() / 100 * attalums;
+  cout << "Bus nepieciesami " << celaBenzins << " Litri.";
 }
 
 int main() {
@@ -91,6 +99,7 @@ int main() {
   cout << "\nYear : " << myObj.returnHP(2020);
 
   myObj.printAutoData();
+  myObj.getCelaBenzins();
 
   return 0;
 }
