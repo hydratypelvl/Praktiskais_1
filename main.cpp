@@ -65,7 +65,16 @@ class Auto {
     int returnHP(int hp){
       return hp;
     }
+    void printAutoData();
 };
+
+void Auto::printAutoData() {
+  cout << "\n\nFuel: " << getFuel();
+  cout << "\nBrand: " << getBrand();
+  cout << "\nModel: " << getModel();
+  cout << "\nYear: " << getYear();
+  cout << "\nHorse Power: " << getHP();
+}
 
 int main() {
   Auto myObj;
@@ -80,6 +89,8 @@ int main() {
 
   cout << "\n\nHP : " << myObj.returnHP(950);
   cout << "\nYear : " << myObj.returnHP(2020);
+
+  myObj.printAutoData();
 
   return 0;
 }
