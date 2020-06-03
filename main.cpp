@@ -5,60 +5,56 @@ using namespace std;
 
 class Auto {
   private:
-    float avgFuel = 2.4;
-    string brand = "BMW";
-    string model = "X5";
-
+    float avgFuel;
+    string brand, model;
   public:
-    int year = 2010;
-    int hp = 335;
-    int horsePower = 69;
-    float attalums, celaBenzins;
-    //FUEL
-    // Setter
-    void setFuel(float f) {
-      avgFuel = f;
+    float attalums, celaBenzins; // prieks getCelaBenzins
+    int year,hp;
+    //Constructor
+    Auto() {
+      this->year = 2020;
+      this->avgFuel = 12;
+      this->hp = 686;
+      this->brand = "BMW";
+      this->model = "M3";
     }
-    // Getter
-    float getFuel() {
-      return avgFuel;
+    Auto(float avgFuel ) {
+      this->avgFuel = avgFuel;
     }
-    //BRAND
-    // Setter
-    void setBrand(string b) {
-      brand = b;
-    }
-    // Getter
-    string getBrand() {
-      return brand;
-    }
-    //MODEL
-    // Setter
-    void setModel(string m) {
-      model = m;
-    }
-    // Getter
-    string getModel() {
-      return model;
-    }
-    // YEAR
-    // Setter
+    
+    //Setters
     void setYear(int y) {
       year = y;
     }
-    // Getter
-    int getYear() {
-      return year;
-    }
-    // HORSE POWER
-    // Setter
     void setHP(int h) {
       hp = h;
     }
-    // Getter
+    void setFuel(float f) {
+      avgFuel = f;
+    }
+    void setBrand(string b) {
+      brand = b;
+    }
+    void setModel(string m) {
+      model = m;
+    }
+    //Getters
+    int getYear() {
+      return year;
+    }
     int getHP() {
       return hp;
     }
+    float getFuel() {
+      return avgFuel;
+    }
+    string getBrand() {
+      return brand;
+    }
+    string getModel() {
+      return model;
+    }
+
     // PUBLISKAS KLASES METODES
     int returnYear(int year){
       return year;
@@ -67,39 +63,54 @@ class Auto {
       return hp;
     }
     void printAutoData();
-    void getCelaBenzins();
+    void getCelaBenzins(float attalums);
+    //Destructor
+    ~Auto() {
+        printAutoData();
+        cout 
+        << "  Auto ticis norakstits! \n" 
+        << "--------------------------\n";
+    }
 };
 
+//Arejas Metodes
 void Auto::printAutoData() {
-  cout << "\n\nFuel: " << getFuel();
-  cout << "\nBrand: " << getBrand();
-  cout << "\nModel: " << getModel();
-  cout << "\nYear: " << getYear();
-  cout << "\nHorse Power: " << getHP();
+  cout 
+  << "\n--------------------------" 
+  << "\nYear: " << getYear()
+  << "\nHorse Power: " << getHP()
+  << "\nFuel: " << getFuel()
+  << "\nBrand: " << getBrand()
+  << "\nModel: " << getModel()
+  << "\n--------------------------\n";
+  
 }
-void Auto::getCelaBenzins() {
-  cout << "\n\nIevadiet distanci kilometros: ";
-  cin >> attalums;
-  celaBenzins = getFuel() / 100 * attalums;
+void Auto::getCelaBenzins(float attalums) {
+  celaBenzins = ( getFuel() / 100 ) * attalums;
   cout << "Bus nepieciesami " << celaBenzins << " Litri.";
 }
-
+Auto mansAuto; //globlais
 int main() {
-  Auto myObj;
-  myObj.setFuel(6.9);
-  myObj.setBrand("Toyota");
-  myObj.setModel("Supra");
-  cout << "Fuel: " << myObj.getFuel();
-  cout << "\nBrand: " << myObj.getBrand();
-  cout << "\nModel: " << myObj.getModel();
-  cout << "\nYear: " << myObj.getYear();
-  cout << "\nHorse Power: " << myObj.getHP();
 
-  cout << "\n\nHP : " << myObj.returnHP(950);
-  cout << "\nYear : " << myObj.returnHP(2020);
+  Auto *skolasAuto = new Auto();
 
-  myObj.printAutoData();
-  myObj.getCelaBenzins();
+  mansAuto.setYear(2001);
+  mansAuto.setHP(311);
+  mansAuto.setFuel(9.7);
+  mansAuto.setBrand("Nissan");
+  mansAuto.setModel("350z");
+  mansAuto.printAutoData();
+
+  skolasAuto->setFuel(10.9);
+  skolasAuto->setYear(1997);
+  skolasAuto->setBrand("Toyota");
+  skolasAuto->setModel("Supra");
+  skolasAuto->printAutoData();
+
+  delete skolasAuto;
+
+  Auto *darbaAuto = new Auto(7.7);
+  darbaAuto->printAutoData();
 
   return 0;
 }
